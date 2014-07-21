@@ -1,6 +1,12 @@
 {
     "do_json": false,
     "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull",
+        "javax.validation.constraints.Size",
+        "com.wordnik.swagger.annotations.ApiModel",
+        "com.wordnik.swagger.annotations.ApiModelProperty"
+    ],
     "props": {
         "UUID": [
             "id",
