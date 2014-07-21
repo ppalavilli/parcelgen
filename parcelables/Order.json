@@ -1,0 +1,48 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "UUID": [
+            "id",
+            "parentId"
+        ],
+        "ClientContext": [
+            "context"
+        ],
+        "Long": [
+            "customerUserId",
+            "createdAt",
+            "updatedAt"
+        ],
+        "OrderStatuses": [
+            "statuses"
+        ],
+        "OrderAmounts": [
+            "amounts"
+        ],
+        "List<Discount>": [
+            "discounts"
+        ],
+        "List<OrderItem>": [
+            "items"
+        ],
+        "List<Transactions>": [
+            "transactions"
+        ],
+        "String": [
+            "orderNumber"
+        ]
+    },
+    "annotations": {
+        "class_annotations": [
+             "@ApiModel(description = \"This is a swagger model description.\")"
+        ],
+        "id": [
+           "@NotNull",
+           "@ApiModelProperty(notes = \"Something about the property\")"
+        ],
+        "amounts": [
+            "@NotNull"
+        ]
+    }
+}

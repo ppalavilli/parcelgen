@@ -1,0 +1,23 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+                "co.poynt.api.model.AVSResultType"
+        ],
+    "props": {
+        "String": [
+            "actualResult"
+        ],
+        "AVSResultType": [
+            "addressResult",
+            "postalCodeResult",
+            "stateResult",
+            "countryResult",
+            "phoneResult",
+            "cardHolderNameResult",
+            "cityResult"
+        ]
+    },
+    "enums": [ "AVSResultType" ]
+
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import sys, re, os.path, json
+import os, sys, re, os.path, json, argparse
+from distutils.dir_util import copy_tree, remove_tree
 
 # Parcelgen generates parcelable Java classes based
 # on a json dictionary of types and properties.  It generates
@@ -14,12 +15,19 @@ class ParcelGen:
     BASE_IMPORTS = ("android.os.Parcel", "android.os.Parcelable")
     CLASS_STR = "/* package */ abstract class %s implements %s {"
     CHILD_CLASS_STR = "public class {0} extends _{0} {{"
+    SINGLE_CLASS_STR = "public class %s implements %s {"
+    POJO_CLSS_STR = "public class %s {"
     NATIVE_TYPES = ["string", "byte", "double", "float", "int", "long"]
     BOX_TYPES = ["Byte", "Boolean", "Float", "Integer", "Long", "Short", "Double"]
     JSON_IMPORTS = ["org.json.JSONException", "org.json.JSONObject"]
 
+
     tablevel = 0
     outfile = None
+    aidlOutfile = None
+    combinedCreator = 0
+    aidl = 0
+    pojo = 0
 
     def tabify(self, string):
         return ("\t" * self.tablevel) + string
@@ -33,6 +41,12 @@ class ParcelGen:
     def output(self, string=""):
         if self.outfile:
             self.outfile.write(string + "\n")
+        else:
+            print string
+
+    def outputAidl(self, string=""):
+        if self.aidlOutfile:
+            self.aidlOutfile.write(string + "\n")
         else:
             print string
 
@@ -56,14 +70,23 @@ class ParcelGen:
             method_name = member
         else:
             method_name = "get%s%s" % (member[0].capitalize(), member[1:])
-        return "\tpublic %s %s() {\n\t\t return %s;\n\t}" % (typ, method_name, self.memberize(member))
+        annotationStr = ""
+        if member in self.annotations:
+            for annt in self.annotations[member]:
+                annotationStr += "\t" + annt + "\n"
+        return annotationStr + "\tpublic %s %s() {\n\t\t return %s;\n\t}" % (typ, method_name, self.memberize(member))
+
+    def gen_setter(self, typ, member):
+        method_name = ""
+        method_name = "set%s%s" % (member[0].capitalize(), member[1:])
+        return "\tpublic void %s(%s %s) {\n\t\t this.%s = %s;\n\t}" % (method_name, typ, member, self.memberize(member), member)
 
     def list_type(self, typ):
         match = re.match(r"(List|ArrayList)<(.*)>", typ)
         if match:
             return match.group(2)
         return None
-    
+
     def array_type(self, typ):
         match = re.match(r"(.*)(\[\])", typ)
         if match:
@@ -102,11 +125,11 @@ class ParcelGen:
         if not classname:
             return None
         elif classname.lower() in self.NATIVE_TYPES + ["boolean"]:
-            assignment = self.tabify("%s = source.create%sArray();\n" % (memberized, classname.capitalize())) 			
-            return assignment 
+            assignment = self.tabify("%s = source.create%sArray();\n" % (memberized, classname.capitalize()))
+            return assignment
         else:
             assignment = self.tabify("%s = source.createTypedArray(%s.CREATOR);\n" % (memberized, classname.capitalize()))
-            return assignment 
+            return assignment
 
     def gen_parcelable_line(self, typ, member):
         memberized = self.memberize(member)
@@ -121,6 +144,8 @@ class ParcelGen:
             return self.gen_array_parcelable(typ, memberized)
         elif self.list_type(typ):
             return self.gen_list_parcelable(typ, memberized)
+        elif typ in self.enums:
+            return self.tabify("parcel.writeInt(%s == null ? -1: %s.ordinal());" % (memberized, memberized))
         elif typ in self.serializables:
             return self.tabify("parcel.writeSerializable(%s);" % memberized)
         else:
@@ -207,9 +232,14 @@ class ParcelGen:
         if any("[]" in s for s in self.props.keys()):
             return True
 
-    def print_gen(self, props, class_name, package, imports, transient):
+    def print_gen(self, props, class_name, package, imports, transient, annotations):
         self.props = props
+        self.annotations = annotations
         self.tablevel = 0
+        # write aidl file
+        if self.aidl == 1:
+            self.outputAidl("package %s;\n" % package)
+            self.outputAidl("parcelable %s;\n" % class_name)
         # Imports and open class definition
         self.printtab("package %s;\n" % package)
         imports = set(tuple(imports) + self.BASE_IMPORTS)
@@ -222,6 +252,8 @@ class ParcelGen:
                 imports.add("java.util.Date")
             elif prop == "Uri":
                 imports.add("android.net.Uri")
+            elif prop == "UUID":
+                imports.add("java.util.UUID")
 
         if self.do_json:
             imports.update(self.JSON_IMPORTS)
@@ -243,10 +275,22 @@ class ParcelGen:
         self.printtab(" *    %s's PARCELABLE DESCRIPTION IS CHANGED." % class_name)
         self.printtab(" */")
 
+        # add annotations
+        annotationStr = ""
+        if "class_annotations" in self.annotations:
+            for annt in self.annotations["class_annotations"]:
+                annotationStr += "\n" + annt
+        self.printtab(annotationStr)
+
+
         implements = "Parcelable"
         if self.make_serializable:
             implements += ", Serializable"
-        self.printtab((self.CLASS_STR % (class_name, implements)) + "\n")
+
+        if self.combinedCreator == 1:
+            self.printtab((self.SINGLE_CLASS_STR % (class_name, implements)) + "\n")
+        else:
+            self.printtab((self.CLASS_STR % (class_name, implements)) + "\n")
 
         # Protected member variables
         self.uptab()
@@ -276,10 +320,11 @@ class ParcelGen:
         self.printtab("super();")
         self.downtab()
         self.printtab("}\n")
-    
+
         # Getters for member variables
         for typ, member in self.member_map():
             self.output(self.gen_getter(typ, member))
+            self.output(self.gen_setter(typ, member))
         self.output("\n")
 
         # Parcelable writeToParcel
@@ -322,18 +367,100 @@ class ParcelGen:
                         self.printtab("%s = (%s) source.readValue(%s.class.getClassLoader());" % (memberized, typ.capitalize(), typ.capitalize()))
                     elif typ.lower() in self.NATIVE_TYPES:
                         self.printtab("%s = source.read%s();" % (memberized, typ.capitalize()))
+                    elif typ in self.enums:
+                        self.printtab("int tmpSource%s = source.readInt();" % typ)
+                        self.printtab("%s = tmpSource%s == -1 ? null : %s.values()[tmpSource];" % (memberized, typ, typ))
                     elif typ in self.serializables:
                         self.printtab("%s = (%s)source.readSerializable();" % (memberized, typ))
                     else:
                         self.printtab("%s = source.readParcelable(%s.class.getClassLoader());" % (memberized, typ))
         self.tablevel -= 1
         self.printtab("}\n")
-#       self.print_creator(class_name, "Parcelable.Creator")
+        if self.combinedCreator == 1:
+            self.print_creator(class_name, "Parcelable.Creator")
 
         if self.do_json:
             self.output(self.generate_json_reader(props))
         if self.do_json_writer:
             self.output(self.generate_json_writer(props))
+        self.downtab()
+        self.printtab("}")
+
+    def print_gen_pojo(self, props, class_name, package, imports, transient, annotations):
+        self.props = props
+        self.annotations = annotations
+        self.tablevel = 0
+        # Imports and open class definition
+        self.printtab("package %s;\n" % package)
+        imports = set(tuple(imports) + self.BASE_IMPORTS)
+        for prop in props.keys():
+            if prop.startswith("List"):
+                imports.add("java.util.List")
+            elif prop.startswith("ArrayList"):
+                imports.add("java.util.ArrayList")
+            elif prop == "Date":
+                imports.add("java.util.Date")
+            elif prop == "Uri":
+                imports.add("android.net.Uri")
+
+        imports = list(imports)
+        imports.sort()
+
+        for imp in imports:
+            self.printtab("import %s;" % imp)
+
+        self.output("")
+        self.printtab("/** Automatically generated Parcelable implementation for %s." % class_name)
+        self.printtab(" *    DO NOT MODIFY THIS FILE MANUALLY! IT WILL BE OVERWRITTEN THE NEXT TIME")
+        self.printtab(" *    %s's PARCELABLE DESCRIPTION IS CHANGED." % class_name)
+        self.printtab(" */")
+
+        # add annotations
+        annotationStr = ""
+        if "class_annotations" in self.annotations:
+            for annt in self.annotations["class_annotations"]:
+                annotationStr += "\n" + annt
+        self.printtab(annotationStr)
+
+        implements = ""
+
+        self.printtab((self.POJO_CLSS_STR % class_name) + "\n")
+
+        # Protected member variables
+        self.uptab()
+        for typ, member in self.member_map():
+            if member in transient:
+                typ = "transient " + typ
+            self.printtab("protected %s %s;" % (typ, self.memberize(member)))
+        self.output("")
+
+        # Parameterized Constructor
+        constructor = "protected %s(" % class_name
+        params = []
+        for typ, member in self.member_map():
+            params.append("%s %s" % (typ, member))
+        constructor += "%s) {" % ", ".join(params)
+        self.printtab(constructor)
+        self.uptab()
+        self.printtab("this();")
+        for typ, member in self.member_map():
+            self.printtab("%s = %s;" % (self.memberize(member), member))
+        self.tablevel -= 1
+        self.printtab("}\n")
+
+        # Empty constructor for Parcelable
+        self.printtab("protected %s() {" % class_name)
+        self.uptab()
+        self.printtab("super();")
+        self.downtab()
+        self.printtab("}\n")
+
+        # Getters for member variables
+        for typ, member in self.member_map():
+            self.output(self.gen_getter(typ, member))
+            self.output(self.gen_setter(typ, member))
+        self.output("\n")
+
         self.downtab()
         self.printtab("}")
 
@@ -365,7 +492,7 @@ class ParcelGen:
                     fun += self.tabify("if (!json.isNull(\"%s\")) {\n" % key)
                     self.uptab()
                 # we need to do some special stuff with arrays, so don't assign
-                # that right away 
+                # that right away
                 if not array_type:
                     fun += self.tabify("%s = " % self.memberize(member))
                 if typ.lower() == "float":
@@ -491,6 +618,14 @@ def camel_to_under(member):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', member)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
+
+def copytree(src, dst, symlinks=False):
+    enumFolder = src + "/enums"
+    if os.path.exists(enumFolder):
+        copy_tree(enumFolder, dst, preserve_times=1)
+    else:
+        print "No enums found"
+
 def generate_class(filePath, output):
     # Read parcelable description json
     description = json.load(open(filePath, 'r'))
@@ -504,19 +639,30 @@ def generate_class(filePath, output):
     do_json_writer = description.get("do_json_writer")
     json_blacklist = description.get("json_blacklist") or []
     serializables = description.get("serializables") or ()
+    enums = description.get("enums") or ()
+    annotations = description.get("annotations") or {}
+
     if 'do_json' in description:
         do_json = description.get("do_json")
     else:
         do_json = False
-    class_name = "_" + os.path.basename(filePath).split(".")[0]
+
+    if combinedClass == 1 or generatePojo == 1:
+        class_name = os.path.basename(filePath).split(".")[0]
+    else:
+        class_name = "_" + os.path.basename(filePath).split(".")[0]
 
     generator = ParcelGen()
     generator.json_map = json_map
     generator.json_blacklist = json_blacklist
     generator.serializables = serializables
+    generator.enums = enums
     generator.do_json = do_json
     generator.do_json_writer = do_json_writer
     generator.make_serializable = make_serializable
+    generator.combinedCreator = combinedClass
+    generator.aidl = generateAidl
+    generator.pojo = generatePojo
 
     generator.default_values = default_values
     if output:
@@ -524,6 +670,9 @@ def generate_class(filePath, output):
             dirs = package.split(".")
             dirs.append(class_name + ".java")
             targetFile = os.path.join(output, *dirs)
+            dirs_aidl = package.split(".")
+            dirs_aidl.append(class_name + ".aidl")
+            aidl_targetFile = os.path.join(output, *dirs_aidl)
             # Generate child subclass if it doesn't exist
             if class_name.startswith("_"):
                 child = class_name[1:]
@@ -534,11 +683,16 @@ def generate_class(filePath, output):
                     generator.outfile = open(child_file, 'w')
                     generator.print_child(child, package)
         generator.outfile = open(targetFile, 'w')
-    generator.print_gen(props, class_name, package, imports, transient)
+        if generateAidl == 1:
+            generator.aidlOutfile = open(aidl_targetFile, 'w')
+    if generatePojo == 1:
+        generator.print_gen_pojo(props, class_name, package, imports, transient, annotations)
+    else:
+        generator.print_gen(props, class_name, package, imports, transient, annotations)
 
 
 if __name__ == "__main__":
-    usage = """USAGE: %s parcelfile [destination]
+    usage = """USAGE: %s [OPTIONS] parcelfile [destination]
 
 Generates a parcelable Java implementation for provided description file.
 Writes to stdout unless destination is specified.
@@ -546,14 +700,39 @@ Writes to stdout unless destination is specified.
 If destination is a directory, it is assumed to be the top level
 directory of your Java source. Your class file will be written in the
 appropriate folder based on its Java package.
-If destination is a file, your class will be written to that file."""
+If destination is a file, your class will be written to that file.
+OPTIONS AVAILABLE:
+'-aidl' to generate AIDL file for each class
+'-combine' to combine pojo and parcel CREATOR"""
     if len(sys.argv) < 2:
         print(usage % sys.argv[0])
         exit(0)
     destination = None
-    if len(sys.argv) > 2:
-        destination = sys.argv[2]
-    source = sys.argv[1]
+    source = None
+    isFirst = 1
+    generateAidl = 0
+    combinedClass = 0
+    generatePojo = 0
+    for grp in sys.argv[1:]:
+        if grp == '-aidl':
+            generateAidl = 1
+        elif grp == '-combine':
+            combinedClass = 1
+        elif grp == '-pojo':
+            generatePojo = 1
+        else:
+            if isFirst == 1:
+                source = grp
+                isFirst = 0
+            else:
+                destination = grp
+    if source == None:
+        print(usage % sys.argv[0])
+        exit(0)
+    #Copy enums if there are any
+    if destination != None:
+        copytree(source, destination)
+
     # If both source and destination are directories, run in
     # fake make mode
     if (os.path.isdir(source) and os.path.isdir(destination)):
@@ -562,4 +741,3 @@ If destination is a file, your class will be written to that file."""
             generate_class(os.path.join(source, sourcefile), destination)
     else:
         generate_class(sys.argv[1], destination)
-

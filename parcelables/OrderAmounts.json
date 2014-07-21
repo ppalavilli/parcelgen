@@ -1,0 +1,20 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "currency"
+        ],
+        "Integer": [
+            "subTotal",
+            "discountTotal",
+            "taxTotal",
+            "netTotal"
+        ],
+        "TransactionAmounts": [
+            "authorizedTotals",
+            "capturedTotals",
+            "refundedTotals"
+        ]
+    }
+}

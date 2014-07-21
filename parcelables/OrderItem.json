@@ -1,0 +1,32 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "name",
+            "code"
+        ],
+        "Integer": [
+            "unitPrice",
+            "tax"
+        ],
+        "Float": [
+            "float"
+        ],
+        "Long": [
+            "id",
+            "createdAt",
+            "updatedAt"
+        ],
+        "Boolean": [
+            "popular"
+        ],
+        "OrderItemStatus": [
+            "status"
+        ],
+        "UnitOfMeasure": [
+            "unitOfMeasure"
+        ]
+    },
+              "enums": [ "OrderItemStatus", "UnitOfMeasure"]
+}

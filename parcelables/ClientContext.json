@@ -1,0 +1,21 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+                "co.poynt.api.model.OrderSource"
+        ],
+    "props": {
+        "OrderSource": [
+            "source"
+        ],
+        "Long": [
+            "businessId",
+            "storeId",
+            "employeeUserId"
+        ],
+        "String": [
+            "storeDeviceId"
+        ]
+    },
+              "enums": [ "OrderSource"]
+}

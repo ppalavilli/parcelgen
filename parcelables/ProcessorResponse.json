@@ -1,0 +1,23 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "status",
+            "statusCode",
+            "statusMessage",
+            "transactionId",
+            "approvalCode"
+        ],
+        "Integer": [
+            "approvedAmount"
+        ],
+        "AVSResult": [
+            "avsResult"
+        ],
+        "CVResult": [
+            "cvResult"
+        ]
+    },
+              "enums": [ "CVResult"]
+}

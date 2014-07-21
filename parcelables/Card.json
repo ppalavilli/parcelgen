@@ -1,0 +1,37 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+            "co.poynt.api.model.CardType",
+            "co.poynt.api.model.FinancialInstrumentStatus"
+    ],
+    "props": {
+        "Long": [
+            "id"
+        ],
+        "String": [
+            "number",
+            "numberFirst6",
+            "numberLast4",
+            "numberMasked",
+            "cardHolderFirstName",
+            "cardHolderLastName",
+            "cardHolderFullName",
+            "track1data",
+            "track2data",
+            "track3data",
+            "track4data"
+        ],
+        "Integer": [
+            "expirationMonth",
+            "expirationYear"
+        ],
+        "CardType": [
+            "type"
+        ],
+        "FinancialInstrumentStatus": [
+            "status"
+        ]
+    },
+         "enums": [ "FinancialInstrumentStatus", "CardType" ]
+}

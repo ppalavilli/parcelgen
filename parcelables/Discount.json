@@ -1,0 +1,15 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "customName"
+        ],
+        "Integer": [
+            "amount"
+        ],
+        "Float": [
+            "percentage"
+        ]
+    }
+}

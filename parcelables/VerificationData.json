@@ -1,0 +1,19 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "cvData"
+        ],
+        "Address": [
+            "cardHolderBillingAddress"
+        ],
+        "AdditionalIdType": [
+            "additionalIdType"
+        ],
+        "String": [
+            "additionalIdRefNumber"
+        ]
+    },
+                   "enums": [ "AdditionalIdType"]
+}

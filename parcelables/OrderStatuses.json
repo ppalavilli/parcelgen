@@ -1,0 +1,13 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "OrderStatus": [
+            "status"
+        ],
+        "FulfillmentStatus": [
+            "fulfillmentStatus"
+        ]
+    },
+              "enums": [ "OrderStatus", "FulfillmentStatus"]
+}

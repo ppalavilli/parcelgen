@@ -1,0 +1,13 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "EntryMode": [
+            "entryMode"
+        ],
+        "CustomerPresenceStatus": [
+            "customerPresenceStatus"
+        ]
+    },
+         "enums": [ "EntryMode", "CustomerPresenceStatus"]
+}

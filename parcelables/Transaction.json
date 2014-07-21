@@ -1,0 +1,44 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "transactionNumber",
+            "receiptEmailAddress"
+        ],
+        "UUID": [
+            "id",
+            "parentId"
+        ],
+        "TransactionAmounts": [
+            "amounts"
+        ],
+        "TransactionStatus": [
+            "status"
+        ],
+        "TransactionAction": [
+            "action"
+        ],
+        "FundingSourceType": [
+            "fundingSourceType"
+        ],
+        "Long": [
+            "customerUserId",
+            "createdAt",
+            "updatedAt"
+        ],
+        "Boolean": [
+            "signatureCaptured"
+        ],
+        "byte[]": [
+            "signature"
+        ],
+        "FundingSource": [
+            "fundingSource"
+        ],
+        "ProcessorResponse": [
+            "processorResponse"
+        ]
+    },
+              "enums": [ "TransactionStatus", "FundingSourceType"]
+}
