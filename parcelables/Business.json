@@ -1,0 +1,41 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "activeSince"
+        ],
+        "BusinessType": [
+            "type"
+        ],
+        "String": [
+            "externalMerchantId",
+            "legalName",
+            "businessUrl",
+            "emailAddress",
+            "doingBusinessAs",
+            "description",
+            "industryType",
+            "mcc",
+            "sic",
+            "timezone",
+            "logoUrl"
+        ],
+        "Phone": [
+            "phone"
+        ],
+        "Address": [
+            "address"
+        ],
+        "BusinessStatus": [
+            "status"
+        ],
+        "List<Store>": [
+          "stores"
+        ],
+        "Map<String, String>": [
+          "attributes"
+        ]
+    }
+}

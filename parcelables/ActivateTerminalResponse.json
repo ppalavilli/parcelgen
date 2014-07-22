@@ -1,0 +1,13 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "TokenResponse": [
+            "tokenResponse"
+        ],
+        "Boolean": [
+            "usingExistingCredentials",
+            "alreadyActivated"
+        ]
+    }
+}

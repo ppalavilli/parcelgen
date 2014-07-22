@@ -1,0 +1,19 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "businessId"
+        ],
+        "String": [
+            "firstName",
+            "lastName",
+            "middleName",
+            "middleInitial"
+        ],
+        "List<UserCredential>": [
+            "credentials"
+        ]
+    }
+}

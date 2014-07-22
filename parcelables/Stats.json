@@ -1,0 +1,33 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "businessId",
+            "storeId",
+            "terminalId",
+            "date"
+        ],
+        "String": [
+            "breakDownId",
+            "type",
+            "label",
+            "heading"
+        ],
+        "StatsFacet": [
+            "facet"
+        ],
+        "StatsTimeUnit": [
+             "timeUnit"
+        ],
+        "StatsLayout": [
+             "layout"
+        ],
+        "List<StatsItem>": [
+             "items"
+        ],
+        "List<Stats>": [
+             "breakDowns"
+        ]
+    }
+}

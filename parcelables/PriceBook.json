@@ -1,0 +1,41 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull",
+        "javax.validation.constraints.Size"
+    ],
+    "props": {
+        "Long": [
+            "businessId"
+        ],
+        "String": [
+            "id",
+            "name",
+            "description"
+        ],
+        "PriceStatus":[
+            "status"
+        ],
+        "Calendar": [
+          "startAt",
+          "createdAt",
+          "updatedAt"
+        ]
+    },
+    "annotations": {
+        "name": [
+           "@NotNull",
+           "@Size(max = 45)"
+        ],
+        "description": [
+           "@Size(max = 1024)"
+        ],
+        "businessId": [
+           "@NotNull"
+        ],
+        "startAt": [
+           "@NotNull"
+        ]
+    }
+}

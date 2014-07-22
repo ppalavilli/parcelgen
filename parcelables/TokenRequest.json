@@ -1,0 +1,28 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull"
+    ],
+    "props": {
+        "String": [
+            "grantType",
+            "assertion",
+            "username",
+            "password",
+            "refreshToken",
+            "storeDeviceId"
+        ],
+        "Long": [
+            "businessId"
+        ],
+        "Channel": [
+            "channel"
+        ]
+    },
+    "annotations": {
+        "grantType": [
+           "@NotNull"
+        ]
+    }
+}

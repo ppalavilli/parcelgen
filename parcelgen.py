@@ -254,6 +254,10 @@ class ParcelGen:
                 imports.add("android.net.Uri")
             elif prop == "UUID":
                 imports.add("java.util.UUID")
+            elif prop == "BigDecimal":
+                imports.add("java.math.BigDecimal")
+            elif prop == "Calendar":
+                imports.add("java.util.Calendar")
 
         if self.do_json:
             imports.update(self.JSON_IMPORTS)

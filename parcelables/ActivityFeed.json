@@ -1,0 +1,41 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "businessId",
+            "storeId",
+            "actionAt",
+            "createdAt",
+            "updatedAt"
+        ],
+        "ActivitySource": [
+            "source"
+        ],
+        "String": [
+            "sensorId",
+            "externalId",
+            "text",
+            "imageUrl"
+        ],
+        "NetworkInterfaceType": [
+            "networkInterface"
+        ],
+        "Boolean": [
+            "newMacAddress"
+        ],
+        "ActivityAction": [
+            "action"
+        ],
+        "BigDecimal": [
+            "rating"
+        ],
+        "TextSentiment": [
+            "sentiment"
+        ],
+        "ActivityUser": [
+            "activityUser"
+        ]
+    }
+}

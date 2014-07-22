@@ -1,0 +1,19 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "totalOrders",
+            "since"
+        ],
+        "List<CustomerScore>": [
+            "scores"
+        ],
+        "List<CustomerTopItem>": [
+            "topItems"
+        ],
+        "List<CurrencyAmount>": [
+            "lifeTimeSpend"
+        ]
+    }
+}

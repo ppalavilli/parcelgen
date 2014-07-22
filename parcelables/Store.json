@@ -1,0 +1,37 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id"
+        ],
+        "Float": [
+            "longitude",
+            "latitude"
+        ],
+        "String": [
+            "externalStoreId",
+            "displayName",
+            "currency",
+            "timeZone"
+        ],
+        "StoreStatus": [
+            "status"
+        ],
+        "Boolean": [
+            "fixedLocation"
+        ],
+        "List<StoreDevice>": [
+            "storeDevices"
+        ],
+        "Phone": [
+            "phone"
+        ],
+        "Address": [
+            "address"
+        ],
+        "Map<String, String>": [
+             "attributes"
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "start_date",
+            "end_date",
+            "generated_at"
+        ],
+        "String": [
+            "report_type",
+            "title",
+            "google_url",
+            "s3_url"
+        ]
+    }
+}

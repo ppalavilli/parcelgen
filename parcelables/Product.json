@@ -1,0 +1,128 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull",
+        "javax.validation.constraints.Size"
+    ],
+    "props": {
+        "String": [
+            "ean",
+            "upc",
+            "isbn",
+            "plu",
+            "asin",
+            "name",
+            "variantName",
+            "description",
+            "specification",
+            "brand",
+            "manufacturer",
+            "publisher",
+            "studio",
+            "designer",
+            "author",
+            "artist",
+            "tags",
+            "id",
+            "productTemplateId",
+            "sku",
+            "mpn",
+            "styleNumber",
+            "modelNumber"
+        ],
+        "Calendar": [
+            "releaseDate",
+            "createdAt",
+            "updatedAt"
+        ],
+        "Long":[
+            "businessId"
+        ],
+        "CurrencyAmount": [
+            "msrp"
+        ],
+        "List<String>": [
+            "templateOverrides",
+            "imageUrl"
+        ],
+        "ProductType": [
+            "type"
+        ],
+        "ProductStatus": [
+             "status"
+        ],
+        "Boolean": [
+             "variant"
+        ]
+    },
+    "annotations": {
+        "ean": [
+           "@Size(max = 45)"
+        ],
+        "upc": [
+           "@Size(max = 45)"
+        ],
+        "isbn": [
+           "@Size(max = 45)"
+        ],
+        "plu": [
+           "@Size(max = 45)"
+        ],
+        "asin": [
+           "@Size(max = 45)"
+        ],
+        "name": [
+           "@NotNull",
+           "@Size(max = 64)"
+        ],
+        "variantName": [
+           "@Size(max = 128)"
+        ],
+        "description": [
+           "@Size(max = 1024)"
+        ],
+        "specification": [
+           "@Size(max = 2048)"
+        ],
+        "brand": [
+           "@Size(max = 64)"
+        ],
+        "manufacturer": [
+           "@Size(max = 64)"
+        ],
+        "publisher": [
+           "@Size(max = 64)"
+        ],
+        "studio": [
+           "@Size(max = 64)"
+        ],
+        "designer": [
+           "@Size(max = 64)"
+        ],
+        "author": [
+           "@Size(max = 64)"
+        ],
+        "artist": [
+           "@Size(max = 64)"
+        ],
+        "tags": [
+           "@Size(max = 1024)"
+        ],
+        "sku": [
+           "@Size(max = 64)"
+        ],
+        "mpn": [
+           "@Size(max = 64)"
+        ],
+        "styleNumber": [
+           "@Size(max = 64)"
+        ],
+        "modelNumber": [
+           "@Size(max = 64)"
+        ],
+        "type": [
+           "@NotNull"
+        ]
+    }
+}

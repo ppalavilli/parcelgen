@@ -1,0 +1,20 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "startTimeSec",
+            "endTimeSec"
+        ],
+        "Integer": [
+            "txnCountPerTimeWindow",
+            "timeWindowInSec"
+        ],
+        "Card": [
+            "payerCard"
+        ],
+        "FundingSourceEntryDetails": [
+            "entryDetails"
+        ]
+    }
+}

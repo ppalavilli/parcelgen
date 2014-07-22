@@ -1,0 +1,66 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+                "javax.validation.constraints.NotNull",
+                "javax.validation.constraints.Size"
+        ],
+    "props": {
+        "Long": [
+            "businessId"
+        ],
+        "ApplicationType": [
+            "type"
+        ],
+        "String": [
+            "id",
+            "applicationUrn",
+            "name",
+            "description",
+            "publicKey",
+            "privateKey",
+            "category",
+            "websiteUrl",
+            "email",
+            "privacyPolicyUrl"
+        ],
+        "ApplicationStatus": [
+            "status"
+        ],
+        "Calendar": [
+          "createdAt",
+          "updatedAt"
+        ]
+     },
+     "annotations": {
+         "applicationUrn": [
+            "@NotNull",
+            "@Size(max = 64)"
+         ],
+         "name": [
+            "@NotNull",
+            "@Size(max = 64)"
+         ],
+         "description": [
+            "@Size(max = 2048)"
+         ],
+         "type": [
+            "@NotNull"
+         ],
+         "businessId":[
+           "@NotNull"
+         ],
+         "category": [
+            "@Size(max = 64)"
+         ],
+         "websiteUrl": [
+            "@Size(max = 1024)"
+         ],
+         "email": [
+            "@Size(max = 256)"
+         ],
+         "privacyPolicyUrl": [
+            "@Size(max = 1024)"
+         ]
+     }
+}

@@ -5,16 +5,23 @@
                 "co.poynt.api.model.OrderSource"
         ],
     "props": {
-        "OrderSource": [
-            "source"
-        ],
         "Long": [
             "businessId",
             "storeId",
             "employeeUserId"
         ],
         "String": [
-            "storeDeviceId"
+            "storeDeviceId",
+            "mid",
+            "tid",
+            "mcc"
+        ],
+        "TransactionSource": [
+          "source"
+        ],
+        "Calendar": [
+            "transmissionAt",
+            "transmissionAtLocal"
         ]
     },
               "enums": [ "OrderSource"]

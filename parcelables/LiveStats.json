@@ -1,0 +1,9 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "ArrayList<Stats>": [
+            "stats"
+        ]
+    }
+}

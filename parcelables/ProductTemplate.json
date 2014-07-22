@@ -1,0 +1,38 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "id",
+            "ean",
+            "upc",
+            "isbn",
+            "plu",
+            "asin",
+            "name",
+            "variantName",
+            "description",
+            "specification",
+            "imageUrl",
+            "brand",
+            "manufacturer",
+            "publisher",
+            "studio",
+            "designer",
+            "author",
+            "artist",
+            "tags"
+        ],
+        "Calendar": [
+            "releaseDate",
+            "createdAt",
+            "updatedAt"
+        ],
+        "CurrencyAmount": [
+            "msrp"
+        ],
+        "ProductTemplateStatus": [
+            "status"
+        ]
+    }
+}

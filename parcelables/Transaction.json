@@ -23,6 +23,8 @@
             "fundingSourceType"
         ],
         "Long": [
+            "_id",
+            "_parentId",
             "customerUserId",
             "createdAt",
             "updatedAt"

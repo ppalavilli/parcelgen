@@ -1,0 +1,43 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "matchingCustomerUserId",
+            "createdAt",
+            "updatedAt"
+        ],
+        "ActivitySource": [
+            "source"
+        ],
+        "String": [
+            "externalId",
+            "fullName",
+            "firstName",
+            "lastName",
+            "middleName",
+            "screenName",
+            "photoUrl",
+            "homeCity"
+        ],
+        "ActivityUserType": [
+            "type"
+        ],
+        "Gender": [
+            "gender"
+        ],
+        "ActivityAction": [
+            "action"
+        ],
+        "BigDecimal": [
+            "rating"
+        ],
+        "TextSentiment": [
+            "sentiment"
+        ],
+        "ActivityUser": [
+            "activityUser"
+        ]
+    }
+}

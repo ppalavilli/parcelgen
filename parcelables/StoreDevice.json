@@ -1,0 +1,36 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull",
+        "javax.validation.constraints.Size"
+    ],
+    "props": {
+        "Long": [
+            "lastSeenAt",
+            "createdAt",
+            "updateAt"
+        ],
+        "String": [
+            "externalTerminalId",
+            "deviceId",
+            "name",
+            "publicKey"
+        ],
+        "StoreDeviceType": [
+            "type"
+        ],
+        "StoreDeviceStatus": [
+            "status"
+        ]
+    },
+    "annotations": {
+        "deviceId": [
+           "@NotNull",
+           "@Size(max = 64)"
+        ],
+        "publicKey": [
+           "@Size(max = 512)"
+        ]
+    }
+}

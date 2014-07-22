@@ -1,0 +1,32 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "accessToken",
+            "refreshToken",
+            "scope",
+            "storeDeviceId",
+            "publicCredentialValue"
+        ],
+        "Long": [
+            "expiresIn",
+            "userId"
+        ],
+        "Channel": [
+            "channel"
+        ],
+        "TokenType": [
+            "tokenType"
+        ],
+        "PrincipalType": [
+            "userType"
+        ],
+        "BusinessUserRole":[
+            "businessUserRole"
+        ],
+        "CredentialType": [
+            "publicCredentialType"
+        ]
+    }
+}

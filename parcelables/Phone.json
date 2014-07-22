@@ -1,0 +1,27 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "createdAt",
+            "updatedAt"
+        ],
+        "String": [
+            "ituCountryCode",
+            "areaCode",
+            "localPhoneNumber",
+            "extensionNumber"
+        ],
+        "Boolean": [
+            "primaryDayTime",
+            "primaryEvening"
+        ],
+        "PhoneStatus": [
+            "status"
+        ],
+        "PhoneType": [
+            "type"
+        ]
+    }
+}

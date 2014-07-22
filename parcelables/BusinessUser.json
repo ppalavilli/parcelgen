@@ -1,0 +1,31 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "userId",
+            "businessId",
+            "startDate",
+            "endDate"
+        ],
+        "BusinessUserStatus": [
+            "status"
+        ],
+        "String": [
+            "firstName",
+            "lastName",
+            "middleName",
+            "middleInitial",
+            "nickName"
+        ],
+        "List<Card>": [
+            "cards"
+        ],
+        "List<UserCredential>":[
+            "credentials"
+        ],
+        "EmploymentDetails": [
+          "employmentDetails"
+        ]
+    }
+}

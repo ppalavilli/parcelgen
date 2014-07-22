@@ -16,6 +16,7 @@
             "context"
         ],
         "Long": [
+            "_id",
             "customerUserId",
             "createdAt",
             "updatedAt"

@@ -1,0 +1,38 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull"
+    ],
+    "props": {
+        "String": [
+            "productId"
+        ],
+        "Long": [
+            "businessId",
+            "storeId",
+            "stockCount",
+            "availableCount",
+            "reOrderPoint",
+            "reOrderLevel"
+        ],
+        "CurrencyAmount": [
+            "avgUnitCost"
+        ],
+        "Calendar": [
+            "createdAt",
+            "updatedAt"
+        ]
+    },
+    "annotations": {
+        "productId": [
+           "@NotNull"
+        ],
+        "businessId": [
+            "@NotNull"
+        ],
+        "countUnit": [
+            "@NotNull"
+        ]
+    }
+}

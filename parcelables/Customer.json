@@ -1,0 +1,45 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "businessId",
+            "createdAt"
+        ],
+        "String": [
+            "firstName",
+            "lastName",
+            "middleName",
+            "middleInitial",
+            "nickName",
+            "description",
+            "industryType",
+            "mcc",
+            "sic",
+            "timezone",
+            "logoUrl"
+        ],
+        "List<Card>": [
+            "cards"
+        ],
+        "List<Devices>": [
+            "devices"
+        ],
+        "Map<EmailType, Email>": [
+            "emails"
+        ],
+        "Map<AddressType, Address>": [
+          "addresses"
+        ],
+        "Map<PhoneType, phone>": [
+          "phones"
+        ],
+        "CustomerBusinessPreferences": [
+            "businessPreferences"
+        ],
+        "CustomerInsights": [
+            "insights"
+        ]
+    }
+}

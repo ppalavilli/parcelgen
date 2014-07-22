@@ -1,0 +1,36 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+            "javax.validation.constraints.Size",
+            "javax.validation.constraints.NotNull"
+    ],
+    "props": {
+        "String": [
+            "id",
+            "name",
+            "catalogId",
+            "shortCode"
+        ],
+        "Calendar": [
+            "createdAt",
+            "updatedAt"
+        ]
+    },
+    "annotations": {
+        "class_annotations": [
+             "@ApiModel(description = \"This is a swagger model description.\")"
+        ],
+        "name": [
+           "@NotNull",
+           "@Size(max = 64)"
+        ],
+        "shortCode": [
+           "@NotNull",
+           "@Size(max = 8)"
+        ],
+        "catalogId": [
+            "@NotNull"
+        ]
+    }
+}

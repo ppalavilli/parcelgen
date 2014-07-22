@@ -1,0 +1,14 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "preferredCardId"
+        ],
+        "Boolean": [
+            "useCardOnfile",
+            "emailReceipt",
+            "printPaperReceipt"
+        ]
+    }
+}

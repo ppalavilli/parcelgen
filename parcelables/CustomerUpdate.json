@@ -1,0 +1,30 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "updateById",
+            "actorBusinessId"
+        ],
+        "String": [
+            "updateFirstName",
+            "updateLastName",
+            "updateMiddleName",
+            "updateMiddleInitial",
+            "updateNickName"
+        ],
+        "List<Card>": [
+            "addCards",
+            "updateCards",
+            "removeCards"
+        ],
+        "List<Device>": [
+            "addDevices",
+            "updateevices",
+            "removeDevices"
+        ],
+        "CustomerBusinessPreferences": [
+            "updateBusinessPreferences"
+        ]
+    }
+}

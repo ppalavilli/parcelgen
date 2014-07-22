@@ -1,0 +1,16 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Integer": [
+            "httpStatus"
+        ],
+        "String": [
+            "code",
+            "message",
+            "developerMessage",
+            "moreInfo",
+            "requestId"
+        ]
+    }
+}

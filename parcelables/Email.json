@@ -1,0 +1,23 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "createdAt",
+            "updatedAt"
+        ],
+        "String": [
+            "emailAddress"
+        ],
+        "EmailType": [
+            "type"
+        ],
+        "EmailStatus": [
+            "status"
+        ],
+        "Boolean": [
+          "primary"
+        ]
+    }
+}

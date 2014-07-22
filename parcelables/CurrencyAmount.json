@@ -1,0 +1,22 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+                "javax.validation.constraints.NotNull",
+                "javax.validation.constraints.Size"
+        ],
+    "props": {
+        "Integer": [
+            "amount"
+        ],
+        "String": [
+            "currency"
+        ]
+    },
+    "annotations": {
+        "currency": [
+           "@NotNull",
+           "@Size(min = 3, max = 3)"
+        ]
+    }
+}

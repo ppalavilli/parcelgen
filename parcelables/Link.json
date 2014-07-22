@@ -1,0 +1,11 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "href",
+            "rel",
+            "method"
+        ]
+    }
+}

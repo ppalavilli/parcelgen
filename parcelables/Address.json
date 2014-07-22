@@ -1,0 +1,32 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id",
+            "createdAt",
+            "updatedAt"
+        ],
+        "TerritoryType": [
+            "territoryType"
+        ],
+        "String": [
+            "line1",
+            "lin2",
+            "city",
+            "territory",
+            "postalCode",
+            "postalCodeExtension",
+            "countryCode"
+        ],
+        "Boolean": [
+            "primary"
+        ],
+        "AddressStatus": [
+            "status"
+        ],
+        "AddressType": [
+            "type"
+        ]
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+            "javax.validation.constraints.Max",
+            "javax.validation.constraints.NotNull"
+    ],
+    "props": {
+        "Long": [
+            "businessId",
+            "storeId"
+        ],
+        "String": [
+            "id",
+            "name",
+            "priceBookId"
+        ],
+        "Calendar": [
+            "createdAt",
+            "updatedAt"
+        ]
+    },
+    "annotations": {
+        "class_annotations": [
+             "@ApiModel(description = \"This is a swagger model description.\")"
+        ],
+        "name": [
+           "@NotNull",
+           "@Max(64)"
+        ],
+        "businessId": [
+            "@NotNull"
+        ]
+    }
+}

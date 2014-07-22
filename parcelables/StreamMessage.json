@@ -1,0 +1,16 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "businessId",
+            "storeId",
+            "deviceId",
+            "type",
+            "body"
+        ],
+        "Long": [
+            "createdAt"
+        ]
+    }
+}

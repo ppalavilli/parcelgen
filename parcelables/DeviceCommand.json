@@ -1,0 +1,15 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "id"
+        ],
+        "DeviceType": [
+            "deviceType"
+        ],
+        "List<DeviceMacAddress>": [
+            "macAddresses"
+        ]
+    }
+}

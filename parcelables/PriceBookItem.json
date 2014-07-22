@@ -1,0 +1,41 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "imports": [
+        "javax.validation.constraints.NotNull"
+    ],
+    "props": {
+        "String": [
+            "id",
+            "priceBookId",
+            "productId",
+            "variantId"
+        ],
+        "CurrencyAmount": [
+            "listPrice",
+            "salesPrice"
+        ],
+        "PriceStatus":[
+            "status"
+        ],
+        "Calendar": [
+          "startAt",
+          "createdAt",
+          "updatedAt"
+        ]
+    },
+    "annotations": {
+        "priceBookId": [
+           "@NotNull"
+        ],
+        "productId": [
+            "@NotNull"
+        ],
+        "listPrice": [
+            "@NotNull"
+        ],
+        "startAt": [
+            "@NotNull"
+        ]
+    }
+}

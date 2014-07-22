@@ -1,0 +1,12 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "CommandType": [
+            "type"
+        ],
+        "Map<String,String>": [
+            "command"
+        ]
+    }
+}

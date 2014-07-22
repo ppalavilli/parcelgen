@@ -1,0 +1,20 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "String": [
+            "id",
+            "name"
+        ],
+        "StockAdjustmentType": [
+            "type"
+        ],
+        "InventoryAdjustmentStatus": [
+            "status"
+        ],
+        "Calendar": [
+            "createdAt",
+            "updatedAt"
+        ]
+    }
+}

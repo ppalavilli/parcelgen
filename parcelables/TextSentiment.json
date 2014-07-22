@@ -3,13 +3,10 @@
     "package": "co.poynt.api.model",
     "props": {
         "String": [
-            "customName"
+            "mood"
         ],
-        "Integer": [
-            "amount"
-        ],
-        "Float": [
-            "percentage"
+        "BigDecimal": [
+            "confidence"
         ]
     }
 }

@@ -1,0 +1,21 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "BigDecimal": [
+            "count"
+        ],
+        "Long": [
+            "productId",
+            "variationId",
+            "firstPurchasedAt",
+            "lastPurchasedAt"
+        ],
+        "String": [
+            "name"
+        ],
+        "UnitOfMeasure": [
+            "countUnit"
+        ]
+    }
+}

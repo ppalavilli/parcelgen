@@ -1,0 +1,14 @@
+{
+    "do_json": false,
+    "package": "co.poynt.api.model",
+    "props": {
+        "Long": [
+            "count"
+        ],
+        "List<Catalog>": [
+            "catalogs"
+        ],
+        "List<Link>": [
+             "links"
+        ]
+    }}
