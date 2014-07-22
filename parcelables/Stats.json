@@ -29,5 +29,6 @@
         "List<Stats>": [
              "breakDowns"
         ]
-    }
+    },
+    "enums": [ "StatsFacet", "StatsTimeUnit", "StatsLayout"]
 }

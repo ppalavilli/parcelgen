@@ -1,9 +1,8 @@
-
 package co.poynt.api.model;
 
 public enum Code {
 
-    // @formatter:off
+	// @formatter:off
 	// duplicated exceptions
 	STORE_DEVICE_ALREADY_REGISTERED(400, "Terminal already registered with a different store."),
 	BUSINESS_ALREADY_EXISTS    (400, "The business already registered in our system."),
@@ -46,6 +45,7 @@ public enum Code {
 	MULTIPLE_CARDS_MATCHING_PAN(400, "Multiple card found matching PAN."),
 	TENDER_NEVER_PROCESSED     (400, "Tender processing was started but never completed"),
 	APPLICATION_NOT_FOUND      (404, "Application not found in our records."),
+	TRANSACTION_NOT_FOUND      (404, "Transaction not found"),
 
 	// invalid information exceptions
 	INVALID_PARAMETER          (400, "Parameter provided is invalid."),
@@ -57,22 +57,23 @@ public enum Code {
 	INVALID_ACCESS_TOKEN       (401, "Access token is missing or invalid."),
 	INVALID_REFRESH_TOKEN      (401, "Refresh token is missing or invalid."),
 	INVALID_REQUEST            (400, "Bad request."),
-	UNAUTHORIZED_ACCESS        (401, "Access not authorized for the requested resource.");
+	UNAUTHORIZED_ACCESS        (401, "Access not authorized for the requested resource."),
+	INVALID_RESOURCE_ID        (404, "The requested resource does not exist.");
 	// @formatter:on
 
-    private final int httpStatus;
-    private final String message;
+	private final int httpStatus;
+	private final String message;
 
-    private Code(int httpStatus, String message) {
-        this.httpStatus = httpStatus;
-        this.message = message;
-    }
+	private Code(int httpStatus, String message) {
+		this.httpStatus = httpStatus;
+		this.message = message;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public int getHttpStatus() {
-        return httpStatus;
-    }
+	public int getHttpStatus() {
+		return httpStatus;
+	}
 }

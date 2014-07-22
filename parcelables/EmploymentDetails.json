@@ -9,5 +9,6 @@
         "BusinessUserRole": [
             "role"
         ]
-    }
+    },
+    "enums": [ "BusinessUserRole"]
 }

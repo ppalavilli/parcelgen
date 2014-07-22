@@ -39,5 +39,6 @@
         "ActivityUser": [
             "activityUser"
         ]
-    }
+    },
+    "enums": [ "ActivityUserType", "ActivitySource", "Gender" ]
 }

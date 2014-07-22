@@ -41,5 +41,6 @@
         "CustomerInsights": [
             "insights"
         ]
-    }
+    },
+              "enums": [ "EmailType", "AddressType", "PhoneType"]
 }

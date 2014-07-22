@@ -62,5 +62,6 @@
          "privacyPolicyUrl": [
             "@Size(max = 1024)"
          ]
-     }
+     },
+     "enums": [ "ApplicationStatus", "ApplicationType" ]
 }

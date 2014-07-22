@@ -34,5 +34,6 @@
         "ProductTemplateStatus": [
             "status"
         ]
-    }
+    },
+    "enums": [ "ProductTemplateStatus"]
 }

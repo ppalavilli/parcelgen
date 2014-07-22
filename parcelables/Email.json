@@ -19,5 +19,6 @@
         "Boolean": [
           "primary"
         ]
-    }
+    },
+    "enums": [ "EmailType", "EmailStatus"]
 }

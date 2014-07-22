@@ -15,5 +15,5 @@
             "additionalIdRefNumber"
         ]
     },
-                   "enums": [ "AdditionalIdType"]
+    "enums": [ "AdditionalIdType"]
 }

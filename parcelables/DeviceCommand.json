@@ -11,5 +11,6 @@
         "List<DeviceMacAddress>": [
             "macAddresses"
         ]
-    }
+    },
+    "enums": [ "DeviceType"]
 }

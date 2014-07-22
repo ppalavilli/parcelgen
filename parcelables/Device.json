@@ -8,5 +8,6 @@
         "Map<String,String>": [
             "command"
         ]
-    }
+    },
+    "enums": [ "CommandType"]
 }

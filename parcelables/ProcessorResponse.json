@@ -19,5 +19,5 @@
             "cvResult"
         ]
     },
-              "enums": [ "CVResult"]
+              "enums": [ "CVResult", "AVSResult"]
 }

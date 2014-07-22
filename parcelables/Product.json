@@ -124,5 +124,6 @@
         "type": [
            "@NotNull"
         ]
-    }
+    },
+    "enums": [ "ProductType", "ProductStatus"]
 }

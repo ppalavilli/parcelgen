@@ -10,5 +10,6 @@
         "ProductProposalStatus": [
             "status"
         ]
-    }
+    },
+    "enums": [ "ProductProposalStatus"]
 }

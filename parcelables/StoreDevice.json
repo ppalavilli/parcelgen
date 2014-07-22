@@ -32,5 +32,6 @@
         "publicKey": [
            "@Size(max = 512)"
         ]
-    }
+    },
+    "enums": [ "StoreDeviceType", "StoreDeviceStatus"]
 }

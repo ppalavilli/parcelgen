@@ -23,5 +23,6 @@
         "PhoneType": [
             "type"
         ]
-    }
+    },
+    "enums": [ "PhoneStatus", "PhoneType"]
 }

@@ -19,9 +19,6 @@
         "TransactionAction": [
             "action"
         ],
-        "FundingSourceType": [
-            "fundingSourceType"
-        ],
         "Long": [
             "_id",
             "_parentId",
@@ -35,6 +32,9 @@
         "byte[]": [
             "signature"
         ],
+        "FundingSourceType": [
+            "fundingSourceType"
+        ],
         "FundingSource": [
             "fundingSource"
         ],
@@ -42,5 +42,5 @@
             "processorResponse"
         ]
     },
-              "enums": [ "TransactionStatus", "FundingSourceType"]
+              "enums": [ "TransactionStatus", "TransactionAction", "FundingSourceType"]
 }

@@ -24,5 +24,6 @@
         "grantType": [
            "@NotNull"
         ]
-    }
+    },
+    "enums": [ "Channel"]
 }

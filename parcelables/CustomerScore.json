@@ -8,5 +8,6 @@
         "CustomerScoreType": [
             "type"
         ]
-    }
+    },
+    "enums": [ "CustomerScoreType"]
 }

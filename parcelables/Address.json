@@ -28,5 +28,6 @@
         "AddressType": [
             "type"
         ]
-    }
+    },
+    "enums": [ "TerritoryType", "AddressStatus", "AddressType" ]
 }

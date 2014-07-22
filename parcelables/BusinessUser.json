@@ -27,5 +27,6 @@
         "EmploymentDetails": [
           "employmentDetails"
         ]
-    }
+    },
+    "enums": [ "BusinessUserStatus" ]
 }

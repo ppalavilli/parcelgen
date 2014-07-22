@@ -17,5 +17,6 @@
         "UnitOfMeasure": [
             "countUnit"
         ]
-    }
+    },
+    "enums": [ "UnitOfMeasure"]
 }
